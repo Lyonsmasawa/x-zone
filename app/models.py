@@ -1,4 +1,5 @@
 from curses.ascii import US
+from email.policy import default
 from enum import unique
 from operator import ge, index
 from unicodedata import category
@@ -57,7 +58,7 @@ class Post(db.Model):
     title = db.Column(db.String(255))
     body = db.Column(db.String(255))
     peek = db.Column(db.String(255))
-    posted = db.Column(db.String(255))
+    posted = db.Column(db.DateTime, default = datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     def __repr__(self):
