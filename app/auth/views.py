@@ -7,6 +7,7 @@ from app.auth.forms import RegistrationForm, LoginForm
 from app.models import User
 from ..email import mail_message
 
+
 @auth.route('/register')
 def register():
     form = RegistrationForm()
@@ -40,4 +41,4 @@ def login():
 @login_required
 def logout():
     logout_user()
-    return
+    return redirect(url_for("main.index"))
