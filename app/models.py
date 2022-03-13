@@ -64,6 +64,15 @@ class Post(db.Model):
     def __repr__(self):
         return f'User {self.title}'
 
+class Comment(db.Model):
+
+    __tablename__ = 'comments'
+    
+    id = db.Column(db.Integer, primary_key = True)
+    comment = db.Column(db.String(255))
+    posted_at = db.Column(db.DateTime, default = datetime.utcnow)
+    post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
 
 
