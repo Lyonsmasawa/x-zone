@@ -29,7 +29,11 @@ class User(UserMixin, db.Model):
     @password.setter
     def password(self, password):
         self.pass_secure = generate_password_hash(password)
-    
+
+    def save_user(self):
+        db.session.add(self)
+        db.session.commit()
+
     def verify_password(self, password):
         return check_password_hash(self.pass_secure, password)
 
@@ -61,10 +65,45 @@ class Post(db.Model):
     peek = db.Column(db.String(255))
     posted = db.Column(db.DateTime, default = datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    category_id = db.Column(db.Integer, db.ForeignKey('categories.id'))
     comments = db.relationship('Comment', backref='post', lazy='dynamic')
+
+    def save_post(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def delete_post(self):
+        db.session.delete(self)
+        db.session.commit()
+
+    @classmethod
+    def get_single_post(cls):
+        post = Post.query.all()
+        return post
+
+    @classmethod
+    def get_all_posts(cls):
+        posts = Post.query.all()
+        return posts
+
+    @classmethod
+    def get_user_posts(cls, user_id):
+        posts = Post.query.filter_by(user_id=user_id)
+        return posts
+    
+    @classmethod
+    def get_posts_by_category(cls, category_id):
+        posts = Post.query.filter_by(category_id=category_id)
+        return posts
+
+    @classmethod
+    def get_posts_comments(self):
+        comments = Comment.query.filter_by(post_id = self.id)
+        return comments
 
     def __repr__(self):
         return f'User {self.title}'
+
 
 class Comment(db.Model):
 
@@ -75,6 +114,30 @@ class Comment(db.Model):
     posted_at = db.Column(db.DateTime, default = datetime.utcnow)
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+    def save_comment(self):
+        db.session.add(self)
+        db.session.commit()
+
+    @classmethod
+    def delete_comment(self):
+        db.session.delete(self)
+        db.session.commit()
+
+    @classmethod
+    def get_comments(cls):
+        comments = Comment.query.all()
+        return comments
+
+    @classmethod
+    def get_comments_by_posts(cls, post_id):
+        comments = Comment.query.filter_by(post_id=post_id)
+        return comments
+
+    @classmethod
+    def get_comments_for_post(cls, post_id):
+        comments = Comment.query.filter_by(post_id=post_id)
+        return comments
 
 
 
