@@ -5,6 +5,7 @@ from . import db
 from . import login_manager
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash,  check_password_hash
+from datetime import datetime
 
 class User(UserMixin, db.Model):
 
@@ -16,6 +17,7 @@ class User(UserMixin, db.Model):
     bio = db.Column(db.String(255))
     pic_path = db.Column(db.String(255), index = True)
     pass_secure = db.Column(db.String(255))
+    posts = db.relationship('Post', backref='user', lazy='dynamic')
 
     @property
     def password(self):
@@ -35,7 +37,16 @@ class User(UserMixin, db.Model):
     def __repr__(self):
         return f'User {self.username}'
 
+class Post(db.Model):
 
+    __tablename__ = 'posts'
+    
+    id = db.Column(db.Integer, primary_key = True)
+    title = db.Column(db.String(255))
+    body = db.Column(db.String(255))
+    peek = db.Column(db.String(255))
+    posted = db.Column(db.String(255))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
 
 
