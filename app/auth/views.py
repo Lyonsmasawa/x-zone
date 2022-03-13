@@ -1,9 +1,13 @@
+from email import message
+
+from app.email import mail_message
 from .. import db
 from . import auth
-from flask import render_template
+from flask import render_template, redirect, url_for
 from flask_login import login_user, logout_user, login_required
 from app.auth.forms import RegistrationForm, LoginForm
 from app.models import User
+from ..email import mail_message
 
 @auth.route('/register')
 def register():
@@ -14,7 +18,9 @@ def register():
         db.session.add(user)
         db.session.commit()
 
-    
+        mail_message("Welcome To X-ZONE", "email/welcome_user", user.email, user=user)
+
+        return redirect(url_for('auth.login'))
 
     return render_template('auth/register.html', register_form = form)
 
