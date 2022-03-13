@@ -1,0 +1,5 @@
+Hello {{user.username}}
+
+Welcome to XZONE blog world.
+
+For all your Tech Updates from all Over THE world.
