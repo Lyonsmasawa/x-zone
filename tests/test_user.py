@@ -6,8 +6,11 @@ class TestUser(unittest.TestCase):
     Test User Class
     """     
     def setUp(self):
-        self.new_user = User(username = 'Lyons', email = 'lyons@gmail.com', password = 'lyonspass')
+        self.new_user = User(password = 'lyonspass')
 
+    def test_instance(self):
+        self.assertTrue(isinstance(self.new_user, User))
+    
     def test_password_setter(self):
         self.assertTrue(self.new_user.pass_secure is not None)
 
@@ -16,4 +19,4 @@ class TestUser(unittest.TestCase):
             self.new_user.password
 
     def test_verify_password(self):
-        self.assertTrue(self.new_user.verify_password('banana'))
+        self.assertTrue(self.new_user.verify_password('lyonspass'))
