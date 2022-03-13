@@ -1,6 +1,7 @@
 from curses.ascii import US
 from enum import unique
 from operator import ge, index
+from unicodedata import category
 from . import db
 from . import login_manager
 from flask_login import UserMixin
@@ -37,6 +38,17 @@ class User(UserMixin, db.Model):
     def __repr__(self):
         return f'User {self.username}'
 
+class Category(db.Model):
+    
+    __tablename__ = 'categories'
+
+    id = db.Column(db.Integer, primary_key = True)
+    category = db.Column(db.String(255))
+    posts = db.relationship('Post', backref='category', lazy='dynamic')
+
+    def __repr__(self):
+        return f'User {self.category}'
+
 class Post(db.Model):
 
     __tablename__ = 'posts'
@@ -47,6 +59,9 @@ class Post(db.Model):
     peek = db.Column(db.String(255))
     posted = db.Column(db.String(255))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+    def __repr__(self):
+        return f'User {self.title}'
 
 
 
