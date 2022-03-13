@@ -20,6 +20,7 @@ class User(UserMixin, db.Model):
     pic_path = db.Column(db.String(255), index = True)
     pass_secure = db.Column(db.String(255))
     posts = db.relationship('Post', backref='user', lazy='dynamic')
+    comments = db.relationship('Comment', backref='user', lazy='dynamic')
 
     @property
     def password(self):
@@ -60,6 +61,7 @@ class Post(db.Model):
     peek = db.Column(db.String(255))
     posted = db.Column(db.DateTime, default = datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    comments = db.relationship('Comment', backref='post', lazy='dynamic')
 
     def __repr__(self):
         return f'User {self.title}'
