@@ -15,6 +15,6 @@ html {
 }
 
 body{
-    background: linear-gradient(135deg, rgba(202, 202, 202, 0.6), rgba(0, 255, 255, 0.600)), url("../img/bgg.jpg");
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../img/qwe.jpg");
     background-size: cover;
 }
