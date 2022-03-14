@@ -77,6 +77,7 @@ def add_post():
 
     return redirect(url_for('main.profile', username = current_user.username))
 
+
 @main.route('/post/<int:id>', methods=['GET', 'POST'])
 def post(id):
     comments = Comment.query.filter_by(post_id = id).all()
@@ -93,6 +94,19 @@ def post(id):
         return redirect(url_for('.post', id=post.id ))
 
     return render_template('post.html', post=post, form=form, comments = comments)
+
+@main.route('/post/<int:id>/preview_image', methods = ['POST'])
+def preview_image(id):
+
+    post = Post.query.filter_by(id=id).first()
+
+    if 'img' in request.files:
+        filename = photos.save(request.files['img'])
+        path = f'photos/{filename}'
+        post.peek = path
+        db.session.commit()
+    
+    return redirect(url_for('main.profile', username = current_user.username))
 
 
 @main.route('/post/<int:id>/edit_post', methods = ['GET', 'POST'])
