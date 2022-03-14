@@ -91,7 +91,7 @@ def post(id):
     return render_template('post.html', post=post, form=form, comments = comments)
 
 
-@main.route('/add_post', methods = ['GET', 'POST'])
+@main.route('/post/<int:id>/edit_post', methods = ['GET', 'POST'])
 def edit_post():
     title = request.args.get('title')
     content = request.args.get('content')
