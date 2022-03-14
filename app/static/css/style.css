@@ -18,3 +18,8 @@ body{
     background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../img/qwe.jpg");
     background-size: cover;
 }
+
+#submit{
+    color: black;
+    background-color: white;
+}

@@ -3,7 +3,7 @@
 
 
 {% block main %}
-<div class="row m-lg-5">
+<div class="row m-lg-5 text-white">
     <div class="col-md-3">
         <h5 class="card p-1 bg-black">
             <p class="text-white">Author: {{post.user.username}}</p>
@@ -13,7 +13,9 @@
             {% if post.peek %}
             <img src="{{url_for('static',filename=post.peek)}}" alt="" class="img-fluid">
             {%else%}
-            <p>Image Loading . . .</p>
+            <p>
+                <img src="{{url_for('static',filename='photos/flask.jpg')}}" alt="" class="p-0.5" style="width: 100%;">
+            </p>
             {% endif %}
             <div class="card-header">{{post.title}}</div>
         </div>
