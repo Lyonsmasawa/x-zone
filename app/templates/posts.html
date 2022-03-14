@@ -10,8 +10,8 @@
             {% for post in posts %}
             <tr>
                 <td>{{post.title}}</td>
-                <td>{{post.content}}</td>
-                <td>{{post.posted}}</td>
+                <td>{{post.body}}</td>
+                <td>{{post.posted.strftime("%m/%d/%Y, %H:%M:%S")}}</td>
             </tr>
             {% endfor %}
 
