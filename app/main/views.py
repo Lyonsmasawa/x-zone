@@ -41,3 +41,13 @@ def update_profile(username):
         return redirect(url_for('.profile', username=user.username))
     
     return render_template('profile/update_profile.html')
+
+@main.route('/profile/<username>/update/pic', methods = ['POST'])
+def update_pic(username):
+
+    user = User.query.filter_by(username=username).first()
+
+    if 'photo' in request.files:
+        filename = photos.save(request.files['photo'])
+        path = f'photos/{filename}'
+        user.
