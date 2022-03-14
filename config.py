@@ -5,6 +5,9 @@ class Config:
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:passdb@localhost/blog'
+    MAIL_SERVER = 'smtp.googlemail.com' #smtp server
+    MAIL_PORT = 587 #gmail smtp server port
+    MAIL_USE_TLS = True #enables a transport layer security to secure emails when sending
 
 class ProdConfig(Config):
     pass
