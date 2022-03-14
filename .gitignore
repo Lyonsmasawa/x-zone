@@ -1,3 +1,4 @@
 *.pyc
 env/
 start.sh
+.env
