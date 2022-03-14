@@ -119,3 +119,13 @@ def delete_post(id):
     flash('Post deleted')
 
     return redirect(url_for('main.profile', username=current_user.username))
+
+@main.route('/post/<int:id>/delete_comment', methods=['GET', 'POST'])
+def delete_comment(id):
+    comment = Comment.get_comments(id)
+    db.session.delete(comment)
+    db.session.commit()
+
+    flash('Comment deleted')
+
+    return redirect(url_for('main.profile', username=current_user.username))
