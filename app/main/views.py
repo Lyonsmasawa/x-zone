@@ -89,3 +89,13 @@ def post(id):
         return redirect(url_for('.post',comments=comments, post=post, form=form, id=id ))
 
     return render_template('post.html', post=post, form=form, comments = comments)
+
+@main.route('/post/<int:id>/delete', methods=['GET', 'POST'])
+def delete_post(id):
+    post = Post.get_single_post(id)
+    db.session.delete(post)
+    db.session.commit()
+
+    flash('Post deleted')
+
+    return redirect(url_for('main.profile', username=current_user.username))
