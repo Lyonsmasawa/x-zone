@@ -25,7 +25,10 @@ def profile(username):
 
     posts = Post.get_user_posts(user.id).order_by(Post.posted.desc()).all()
 
-    return render_template('profile/profile.html', user = user, posts = posts)
+    
+    comments = Comment.get_comments()
+
+    return render_template('profile/profile.html', user = user, posts = posts, comments=comments)
 
 @main.route('/profile/<username>/update', methods = ['GET', 'POST'])
 def update_profile(username):
@@ -87,7 +90,7 @@ def post(id):
         db.session.add(comment)
         db.session.commit()
         
-        return redirect(url_for('.post',comments=comments, post=post, form=form, id=id ))
+        return redirect(url_for('.post', id=post.id ))
 
     return render_template('post.html', post=post, form=form, comments = comments)
 

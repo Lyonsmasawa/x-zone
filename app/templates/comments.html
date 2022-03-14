@@ -11,7 +11,7 @@
             {% for comment in comments %}
             <tr>
                 <td>{{loop.index}}</td>
-                <td>{{comment.content}}</td>
+                <td>{{comment.comment}}</td>
                 <td>{{comment.post.title}}</td>
                 <td>
                     <a href="{{url_for('main.delete_comment', id = comment.id)}}"><i class="fa fa-trash-o"
