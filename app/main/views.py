@@ -38,7 +38,7 @@ def update_profile(username):
         db.session.add(user)
         db.session.commit()
 
-        return redirect(url_for('.profile', username=user.username))
+        return redirect(url_for('.profile', username=user.username, form=form))
     
     return render_template('profile/update_profile.html')
 
