@@ -30,6 +30,31 @@
                 <input class="btn btn-dark" type="submit" value="Upload">
             </form>
         </div>
+
+        <!--Display profile photo-->
+        <div class="col-md-3">
+            {% if user.pic_path %}
+            <img src="{{url_for('static',filename=user.pic_path)}}" alt="" class="img-thumbnail">
+            {%else%}
+            <p>No profile picture</p>
+            {% endif %}
+            <br>
+
+        </div>
     </div>
+    <div class="col-md-12">
+        <hr>
+        <h1>{{user.username}}'s Posts</h1>
+        <br>
+        <div>
+            <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
+                    class="fa fa-plus"></i> Click To Add a Post</button>
+            <br>
+        </div>
+        <br>
+        {% include 'create_post.html' %}
+        <br>
+    </div>
+</div>
 </div>
 {% endblock main %}
