@@ -1,4 +1,3 @@
-from turtle import title
 from flask import render_template, redirect, url_for, flash, abort, request
 from . import main
 from .forms import UpdateProfile, CommentForm
@@ -60,3 +59,13 @@ def update_pic(username):
 @main.route('/add_post', methods = ['GET', 'POST'])
 def add_post():
     title = request.args.get('title')
+    content = request.args.get('content')
+    user_id = request.args.get('user_id')
+
+    add_post = Post(title = title, body = content, user_id=user_id )
+    db.session.add(add_post)
+    db.session.commit()
+
+    flash('Post created successfully', 'success')
+
+    return redirect(url_for('main.profile', username = current_user.username))
