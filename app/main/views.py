@@ -17,6 +17,7 @@ def index():
     return render_template('index.html', posts = posts, quotes = quote)
 
 @main.route('/profile/<username>', methods=['GET', 'POST'])
+@login_required
 def profile(username):
 
     user = User.query.filter_by(username = username).first()
@@ -31,6 +32,7 @@ def profile(username):
     return render_template('profile/profile.html', user = user, posts = posts, comments=comments)
 
 @main.route('/profile/<username>/update', methods = ['GET', 'POST'])
+@login_required
 def update_profile(username):
 
     user = User.query.filter_by(username=username).first()
@@ -51,6 +53,7 @@ def update_profile(username):
     return render_template('profile/update_profile.html', form=form)
 
 @main.route('/profile/<username>/update/pic', methods = ['POST'])
+@login_required
 def update_pic(username):
 
     user = User.query.filter_by(username=username).first()
@@ -64,6 +67,7 @@ def update_pic(username):
     return redirect(url_for('main.profile', username=username))
 
 @main.route('/add_post', methods = ['GET', 'POST'])
+@login_required
 def add_post():
     title = request.args.get('title')
     content = request.args.get('content')
@@ -79,6 +83,7 @@ def add_post():
 
 
 @main.route('/post/<int:id>', methods=['GET', 'POST'])
+@login_required
 def post(id):
     comments = Comment.query.filter_by(post_id = id).all()
     post = Post.query.get(id)
@@ -96,6 +101,7 @@ def post(id):
     return render_template('post.html', post=post, form=form, comments = comments)
 
 @main.route('/post/<int:id>/preview_image', methods = ['POST'])
+@login_required
 def preview_image(id):
 
     post = Post.query.filter_by(id=id).first()
@@ -110,6 +116,7 @@ def preview_image(id):
 
 
 @main.route('/post/<int:id>/edit_post', methods = ['GET', 'POST'])
+@login_required
 def edit_post(id):
 
     post = Post.get_single_post(id)
@@ -128,6 +135,7 @@ def edit_post(id):
     return redirect(url_for('main.profile', username = current_user.username))
 
 @main.route('/post/<int:id>/delete', methods=['GET', 'POST'])
+@login_required
 def delete_post(id):
     post = Post.get_single_post(id)
     db.session.delete(post)
@@ -138,6 +146,7 @@ def delete_post(id):
     return redirect(url_for('main.profile', username=current_user.username))
 
 @main.route('/post/<int:id>/delete_comment', methods=['GET', 'POST'])
+@login_required
 def delete_comment(id):
     comment = Comment.get_single_comment(id)
     db.session.delete(comment)
