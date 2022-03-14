@@ -39,17 +39,18 @@
             <ul class="navbar-nav">
                 {% if current_user.is_authenticated %}
                 <li class="nav-item">
-                    <h4><a class="text-black text-decoration-none"
-                            href="{{url_for('main.profile', username=current_user.username)}}">Profile</a></h4>
+                    <h5><a class="text-black text-decoration-none"
+                            href="{{url_for('main.profile', username=current_user.username)}}">Profile</a></h5>
                 </li>
+                <li>  </li>
                 <li class="nav-item">
-                    <h4><a class="nav-item p-2 text-black text-decoration-none"
-                            href="{{url_for('auth.logout')}}">Logout</a></h4>
+                    <h7><a class="nav-item p-2 text-black text-decoration-none"
+                            href="{{url_for('auth.logout')}}">Logout</a></h7>
                 </li>
                 {% else %}
                 <li class="nav-item">
-                    <h4><a class="nav-item p-2 text-black text-decoration-none" href="{{url_for('auth.login')}}">Sign
-                            in</a></h4>
+                    <h7><a class="nav-item p-2 text-black text-decoration-none" href="{{url_for('auth.login')}}">Sign
+                            in</a></h7>
                 </li>
                 {%endif%}
             </ul>

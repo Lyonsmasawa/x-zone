@@ -3,8 +3,8 @@
 
 {% for post in posts %}
 
-<div class="col-md-2">
-    <div class="card text-justify h-100">
+<div class="col-md-2 m-2 card">
+    <div class="text-justify h-100">
         <strong>
             <h4 class="card-title p-2">{{post.title}}</h4>
         </strong>
@@ -13,12 +13,14 @@
             {% if post.peek %}
             <img src="{{url_for('static',filename=post.peek)}}" alt="" class="p-0.5" style="width: 100%;">
             {%else%}
-            <p>Image Loading . . .</p>
+            <p>
+                <img src="{{url_for('static',filename='photos/flask.jpg')}}" alt="" class="p-0.5" style="width: 100%;">
+            </p>
             {% endif %}
         </div>
         <h6 class="text-black p-1">Posted on: <strong>{{post.posted.strftime("%d %b %Y")}}</strong></h6>
         <strong class="p-1">{{post.user.username}}</strong>
-        <p>{{post.content|truncate(20)}}</p>
+        <p>{{post.body|truncate(30)}}</p>
         <a class="p-1" href="{{url_for('main.post', id = post.id)}}">View post</a>
 </div>
 </div>
