@@ -8,13 +8,15 @@
                 <th> Peek </th>
                 <th> Content </th>
                 <th> Posted </th>
-                <th> Options </th>
+                <th> View </th>
+                <th> Edit </th>
+                <th> Delete </th>
             </thead>
 
             {% for post in posts %}
             <tr>
                 <td>{{post.id}}</td>
-                <td>{{ loop.index }}</td>
+                <td>{{loop.index}}</td>
                 <td>{{post.title}}</td>
                 <td>
                     {% if post.peek %}
@@ -23,7 +25,16 @@
                 </td>
                 <td>{{post.body}}</td>
                 <td>{{post.posted.strftime("%m/%d/%Y, %H:%M:%S")}}</td>
-                <td> <a href="{{url_for('main.delete_post', id = post.id)}}"><i class="fa fa-trash-o" style="color: red;"></i></a> </td>
+                <td>
+                    <a href="{{url_for('main.post', id=post.id)}}">View Post</a>
+                </td>
+                <td>
+                    
+                </td>
+                <td>
+                    <a href="{{url_for('main.delete_post', id = post.id)}}"><i class="fa fa-trash-o"
+                            style="color: red;"></i></a>
+                </td>
             </tr>
             {% endfor %}
 
