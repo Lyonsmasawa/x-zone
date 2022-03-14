@@ -1,0 +1,26 @@
+{% macro displayPosts(posts) %}
+
+
+{% for post in posts %}
+
+<div class="col-md-3 mb-3 container">
+    <div class="card text-justify p-md-1 h-100">
+        <strong>
+            <h4 class="card text-white bg-black p-1">{{post.user.username}}</h4>
+        </strong>
+        <em class="text-center p-0.2"> date posted: {{post.posted.strftime("%d %b %Y")}}</em>
+        <br>
+        <div class="card-body">
+            <strong>{{post.title}}</strong>
+            <br>
+            <p>{{post.content}}</p>
+            <br>
+            <a href="{{url_for('main.post', id = post.id)}}">View post</a>
+        </div>
+    </div>
+</div>
+<br>
+
+{% endfor %}
+
+{% endmacro %}
