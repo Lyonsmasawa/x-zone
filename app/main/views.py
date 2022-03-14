@@ -125,7 +125,7 @@ def delete_post(id):
 
 @main.route('/post/<int:id>/delete_comment', methods=['GET', 'POST'])
 def delete_comment(id):
-    comment = Comment.get_comments(id)
+    comment = Comment.get_single_comment(id)
     db.session.delete(comment)
     db.session.commit()
 

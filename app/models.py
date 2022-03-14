@@ -128,6 +128,11 @@ class Comment(db.Model):
     def get_comments(cls):
         comments = Comment.query.all()
         return comments
+    
+    @classmethod
+    def get_single_comment(cls, id):
+        comment = Comment.query.filter_by(id=id).first()
+        return comment
 
 @login_manager.user_loader
 def load_user(user_id):
