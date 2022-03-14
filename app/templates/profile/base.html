@@ -38,9 +38,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 {% if current_user.is_authenticated %}
-                <li class="nav-item"><p><a class="nav-link" href="{{url_for('auth.logout')}}">Sign out</a></p></li>
-                {% else %}
-                <li class="nav-item"><p><a class="nav-link" href="{{url_for('auth.login')}}">Sign in</a></p></li>
+                <l class="nav-item"><p><a class="nav-link" href="{{url_for('auth.logout')}}">Sign out</a></p></l>
                 {%endif%}
             </ul>
         </div>
