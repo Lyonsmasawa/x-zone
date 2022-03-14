@@ -129,16 +129,6 @@ class Comment(db.Model):
         comments = Comment.query.all()
         return comments
 
-    @classmethod
-    def get_comments_by_posts(cls, post_id):
-        comments = Comment.query.filter_by(post_id=post_id)
-        return comments
-
-    @classmethod
-    def get_comments_for_post(cls, post_id):
-        comments = Comment.query.filter_by(post_id=post_id)
-        return comments
-
 
 
 @login_manager.user_loader
