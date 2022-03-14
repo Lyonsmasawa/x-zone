@@ -8,7 +8,7 @@ from app.models import User
 from ..email import mail_message
 
 
-@auth.route('/register')
+@auth.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
     
@@ -19,11 +19,12 @@ def register():
 
         mail_message("Welcome To X-ZONE", "email/welcome_user", user.email, user=user)
 
+        flash('Welcome to X-ZONE, Login to proceed', 'success')
         return redirect(url_for('auth.login'))
 
     return render_template('auth/register.html', register_form = form)
 
-@auth.route('/login')
+@auth.route('/login', methods=['GET', 'POST'])
 def login():
     login_form = LoginForm()
 
