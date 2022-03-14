@@ -18,7 +18,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+    <nav class="navbar navbar-expand-sm navbar-light bg-light mb-3">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">X-ZONE-D</a>
             <p><em>Technology base</em></p>
@@ -38,14 +38,18 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 {% if current_user.is_authenticated %}
-                <li class="nav-item"><a class="nav-link"
-                        href="{{url_for('main.profile', username=current_user.username)}}">Profile</a></li>
                 <li class="nav-item">
-                    <p><a class="nav-link" href="{{url_for('auth.logout')}}">Sign out</a></p>
+                    <h4><a class="text-black text-decoration-none"
+                            href="{{url_for('main.profile', username=current_user.username)}}">Profile</a></h4>
+                </li>
+                <li class="nav-item">
+                    <h4><a class="nav-item p-2 text-black text-decoration-none"
+                            href="{{url_for('auth.logout')}}">Logout</a></h4>
                 </li>
                 {% else %}
                 <li class="nav-item">
-                    <p><a class="nav-link" href="{{url_for('auth.login')}}">Sign in</a></p>
+                    <h4><a class="nav-item p-2 text-black text-decoration-none" href="{{url_for('auth.login')}}">Sign
+                            in</a></h4>
                 </li>
                 {%endif%}
             </ul>

@@ -8,12 +8,10 @@ X-ZONE-D
 {% block main %}
 <div class="container-fluid">
     <h1 class="text-center">TECH BLOGS</h1>
+    <h8 class="typewrite text-center align-self-sm-center" data-period="6000" data-type='[ "{{quotes.quote}}.  ~ {{quotes.author}}" ]'>
+        <span class="wrap"></span>
+    </h8>
     <hr>
-    <h6>
-        <p class="typewrite text-center" data-period="6000" data-type='[ "{{quotes.quote}}.  ~ {{quotes.author}}" ]'>
-            <span class="wrap"></span>
-        </p>
-    </h6>
     <div class="row">
         {{ macro.displayPosts(posts) }}
     </div>

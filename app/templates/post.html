@@ -9,8 +9,13 @@
             <p class="text-white">Author: {{post.user.username}}</p>
         </h5>
         <div class="card">
+            <!--Display preview photo-->
+            {% if post.peek %}
             <img src="{{url_for('static',filename=post.peek)}}" alt="" class="img-fluid">
-            <div class="card-header">All about Technology</div>
+            {%else%}
+            <p>Image Loading . . .</p>
+            {% endif %}
+            <div class="card-header">{{post.title}}</div>
         </div>
     </div>
     <div class="col-md-5">

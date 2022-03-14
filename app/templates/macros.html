@@ -3,21 +3,24 @@
 
 {% for post in posts %}
 
-<div class="col-md-3 mb-3 container">
-    <div class="card text-justify p-md-1 h-100">
+<div class="col-md-2">
+    <div class="card text-justify h-100">
         <strong>
-            <h4 class="card text-white bg-black p-1">{{post.user.username}}</h4>
+            <h4 class="card-header">{{post.title}}</h4>
         </strong>
-        <em class="text-center p-0.2"> date posted: {{post.posted.strftime("%d %b %Y")}}</em>
-        <br>
-        <div class="card-body">
-            <strong>{{post.title}}</strong>
-            <br>
-            <p>{{post.content}}</p>
-            <br>
-            <a href="{{url_for('main.post', id = post.id)}}">View post</a>
+        <div class=" ">
+            <!--Display preview photo-->
+            {% if post.peek %}
+            <img src="{{url_for('static',filename=post.peek)}}" alt="" class="" style="width: 100%;">
+            {%else%}
+            <p>Image Loading . . .</p>
+            {% endif %}
         </div>
-    </div>
+        <h6 class="text-black p-1">Posted on: <strong>{{post.posted.strftime("%d %b %Y")}}</strong></h6>
+        <strong class="p-1">{{post.user.username}}</strong>
+        <p>{{post.content|truncate(20)}}</p>
+        <a class="p-1" href="{{url_for('main.post', id = post.id)}}">View post</a>
+</div>
 </div>
 <br>
 
