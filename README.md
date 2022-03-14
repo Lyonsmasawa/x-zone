@@ -2,7 +2,7 @@
 
 ### Description
 
-This is a flask application that allows the user to post and view other peoples pitches.
+This is a blogging website made with Flask and Python.
 
 ## Project Peek
 
