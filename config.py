@@ -9,6 +9,9 @@ class Config:
     MAIL_SERVER = 'smtp.googlemail.com' #smtp server
     MAIL_PORT = 587 #gmail smtp server port
     MAIL_USE_TLS = True #enables a transport layer security to secure emails when sending
+    # simple mde  configurations im
+    SIMPLEMDE_JS_IIFE = True
+    SIMPLEMDE_USE_CDN = True
 
 class ProdConfig(Config):
     pass
