@@ -8,6 +8,6 @@ from ..models import User, Post, Category, Comment
 @main.route('/')
 def index():
 
-    posts =  Post.query.order_by(Post.posted.dec()).all()
+    posts =  Post.query.order_by(Post.posted.desc()).all()
 
     return render_template('index.html', posts = posts)
