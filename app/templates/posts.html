@@ -2,16 +2,28 @@
     <table class="table table-bordered table-info table-primary">
         <tbody>
             <thead>
+                <th> Id </th>
+                <th> Filter Latest </th>
                 <th> Title </th>
+                <th> Peek </th>
                 <th> Content </th>
                 <th> Posted </th>
+                <th> Options </th>
             </thead>
 
             {% for post in posts %}
             <tr>
+                <td>{{post.id}}</td>
+                <td>{{ loop.index }}</td>
                 <td>{{post.title}}</td>
+                <td>
+                    {% if post.peek %}
+                    <img src="{{ post.peek }}" alt="Post Preview" class="img-fluid">
+                    {% endif %}
+                </td>
                 <td>{{post.body}}</td>
                 <td>{{post.posted.strftime("%m/%d/%Y, %H:%M:%S")}}</td>
+                <td> <a href="{{url_for('main.delete', id = post.id)}}"><i class="fa fa-trash"></i></a> </td>
             </tr>
             {% endfor %}
 
