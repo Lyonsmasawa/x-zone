@@ -36,7 +36,7 @@ def create_app(config_name):
     from .auth import auth as auth_blueprint
     app.register_blueprint(auth_blueprint, url_prefix = '/authenticate')
 
-    # app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL").replace('postgres://', 'postgresql://')
+    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL").replace('postgres://', 'postgresql://')
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
     return app
