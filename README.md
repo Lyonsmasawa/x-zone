@@ -12,6 +12,8 @@ This is a blogging website made with Flask and Python.
 ### Page
 <img src="peek2.png">
 
+### Page
+<img src="peek3.png">
 
 ## Setup Requirements
 
