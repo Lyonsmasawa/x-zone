@@ -6,14 +6,14 @@ This is a blogging website made with Flask and Python.
 
 ## Project Peek
 
-### Profile
+### Home page
 <img src="peek3.png">
 
-### Page
+### Post View
 <img src="peek.png">
 
-### Page
-<img src="peek4.png">
+### Subscribe to newsletter
+<img src="peek5.png">
 
 ## Setup Requirements
 
