@@ -1,6 +1,6 @@
 from flask import render_template, redirect, url_for, flash, abort, request
 from . import main
-from .forms import UpdateProfile, CategoryForm, CommentForm
+from .forms import UpdateProfile, CommentForm
 from flask_login import login_required, current_user
 from ..models import User, Post, Category, Comment
 from app import db, photos
@@ -30,6 +30,7 @@ def update_profile(username):
 
     if user is None:
         abort(404)
+
     form = UpdateProfile()
 
     if form.validate_on_submit():
@@ -38,9 +39,9 @@ def update_profile(username):
         db.session.add(user)
         db.session.commit()
 
-        return redirect(url_for('.profile', username=user.username, form=form))
+        return redirect(url_for('.profile', username=user.username))
     
-    return render_template('profile/update_profile.html')
+    return render_template('profile/update_profile.html', form=form)
 
 @main.route('/profile/<username>/update/pic', methods = ['POST'])
 def update_pic(username):
