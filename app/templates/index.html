@@ -1,1 +1,16 @@
 {% extends 'base.html' %}
+{% import 'macros.html' as macro%}
+
+{% block title %}
+X-ZONE-D
+{% endblock title %}
+
+{% block main %}
+<div class="container-fluid">
+    <h1 class="text-center">TECH BLOGS</h1>
+    <hr>
+    <div class="row">
+        {{ macro.displayPosts(posts) }}
+    </div>
+</div>
+{% endblock main %}
