@@ -77,8 +77,8 @@ class Post(db.Model):
         db.session.commit()
 
     @classmethod
-    def get_single_post(cls):
-        post = Post.query.all()
+    def get_single_post(cls, id):
+        post = Post.query.filter_by(id=id).first()
         return post
 
     @classmethod
