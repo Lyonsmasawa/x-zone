@@ -3,7 +3,7 @@ from . import main
 from .forms import UpdateProfile, CategoryForm, CommentForm
 from flask_login import login_required, current_user
 from ..models import User, Post, Category, Comment
-from app import db
+from app import db, photos
 
 @main.route('/')
 def index():
@@ -50,4 +50,7 @@ def update_pic(username):
     if 'photo' in request.files:
         filename = photos.save(request.files['photo'])
         path = f'photos/{filename}'
-        user.
+        user.pic_path = path
+        db.session.commit()
+    
+    return redirect(url_for('main.profile', username=username))
