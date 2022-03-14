@@ -15,6 +15,7 @@
             {%else%}
             <img src="{{url_for('static',filename='photos/flask.jpg')}}" alt="" class="p-0.5" style="width: 100%;">  
             {% endif %}
+            <div class="card-header text-black">{{post.title}}</div>
         </div>
     </div>
     <div class="col-md-5">
@@ -38,7 +39,7 @@
 
 </div>
 <div class="row m-lg-auto text-white">
-    <div class="col-md-4">
+    <div class="col-md-4 card">
         {{wtf.quick_form(form)}}
     </div>
 </div>
