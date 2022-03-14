@@ -90,6 +90,21 @@ def post(id):
 
     return render_template('post.html', post=post, form=form, comments = comments)
 
+
+@main.route('/add_post', methods = ['GET', 'POST'])
+def edit_post():
+    title = request.args.get('title')
+    content = request.args.get('content')
+    user_id = request.args.get('user_id')
+
+    edit_post = Post(title = title, body = content, user_id=user_id )
+    db.session.add(edit_post)
+    db.session.commit()
+
+    flash('Changes saved', 'success')
+
+    return redirect(url_for('main.profile', username = current_user.username))
+
 @main.route('/post/<int:id>/delete', methods=['GET', 'POST'])
 def delete_post(id):
     post = Post.get_single_post(id)
