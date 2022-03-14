@@ -23,7 +23,7 @@ def profile(username):
 
     return render_template('profile/profile.html', user = user, posts = posts)
 
-@main.route('/profile/<username>/update', method = ['GET', 'POST'])
+@main.route('/profile/<username>/update', methods = ['GET', 'POST'])
 def update_profile(username):
 
     user = User.query.filter_by(username=username).first()
