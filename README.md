@@ -7,13 +7,13 @@ This is a blogging website made with Flask and Python.
 ## Project Peek
 
 ### Profile
-<img src="peek2.png">
-
-### Page
 <img src="peek3.png">
 
 ### Page
 <img src="peek.png">
+
+### Page
+<img src="peek4.png">
 
 ## Setup Requirements
 
