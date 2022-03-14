@@ -5,7 +5,7 @@
 {% block main %}
 <div class="row m-lg-5 text-white">
     <div class="col-md-3">
-        <h5 class="card p-1 bg-black">
+        <h5 class="card bg-black">
             <p class="text-white">Author: {{post.user.username}}</p>
         </h5>
         <div class="card">
@@ -19,9 +19,9 @@
         </div>
     </div>
     <div class="col-md-5">
-        <div class="card-header text-black">Title: {{post.title}}</div>
+        <div class="card-header">Title: {{post.title}}</div>
         <div class="card-body text-white">
-            {{post.content}}
+            {{post.body}}
         </div>
     </div>
 
@@ -38,7 +38,7 @@
     </div>
 
 </div>
-<div class="row m-lg-auto">
+<div class="row m-lg-auto text-white">
     <div class="col-md-4">
         {{wtf.quick_form(form)}}
     </div>
