@@ -69,3 +69,20 @@ def add_post():
     flash('Post created successfully', 'success')
 
     return redirect(url_for('main.profile', username = current_user.username))
+
+@main.route('/post/<int:id>', methods=['GET', 'POST'])
+def post(id):
+    comments = Comment.query.filter_by(post_id = id).all()
+    post = Post.query.get(id)
+    if post is None:
+        abort(404)
+
+    form = CommentForm()
+    if form.validate_on_submit():
+        comment = Comment(comment = form.comment.data, post_id = id, user_id=current_user.id)
+        db.session.add(comment)
+        db.session.commit()
+        
+        return redirect(url_for('.post',comments=comments, post=post, form=form, id=id ))
+
+    return render_template('post.html', post=post, form=form, comments = comments)
