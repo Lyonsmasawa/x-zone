@@ -1,3 +1,4 @@
+from operator import pos
 from flask import render_template, redirect, url_for, flash, abort, request
 from . import main
 from .forms import UpdateProfile, CommentForm
@@ -92,13 +93,17 @@ def post(id):
 
 
 @main.route('/post/<int:id>/edit_post', methods = ['GET', 'POST'])
-def edit_post():
+def edit_post(id):
+
+    post = Post.get_single_post(id)
+
     title = request.args.get('title')
     content = request.args.get('content')
-    user_id = request.args.get('user_id')
 
-    edit_post = Post(title = title, body = content, user_id=user_id )
-    db.session.add(edit_post)
+    post.title = title
+    post.body = content
+    post.title = title
+
     db.session.commit()
 
     flash('Changes saved', 'success')
