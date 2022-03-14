@@ -23,7 +23,7 @@
                 </td>
                 <td>{{post.body}}</td>
                 <td>{{post.posted.strftime("%m/%d/%Y, %H:%M:%S")}}</td>
-                <td> <a href="{{url_for('main.delete', id = post.id)}}"><i class="fa fa-trash"></i></a> </td>
+                <td> <a href="{{url_for('main.delete', id = post.id)}}"><i class="fa fa-trash-o" style="color: red;"></i></a> </td>
             </tr>
             {% endfor %}
 
