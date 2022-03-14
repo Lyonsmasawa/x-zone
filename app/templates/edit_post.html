@@ -1,12 +1,12 @@
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="exampleModalLabel">Edit Post</h4>
+                <h4 class="modal-title" id="editModalLabel">Edit Post</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{ url_for('main.edit_post')}}" enctype="multipart/form-data">
+                <form action="{{ url_for('main.edit_post', id=post.id)}}" enctype="multipart/form-data">
                     <div class="row">
                         <input type="hidden" name="user_id" value="{{ current_user.id}}">
                         <div class="col">
