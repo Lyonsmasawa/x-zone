@@ -1,22 +1,29 @@
-<div class="modal" id="addImage{{post.id}}" tabindex="-1" aria-labelledby="addImageLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="addImageLabel">Add Preview Image</h5>
+                <h4 class="modal-title" id="exampleModalLabel">Edit Post</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{ url_for('main.preview_image',id=post.id)}}" method="post"
-                    enctype="multipart/form-data">
+                <form action="{{ url_for('main.edit_post')}}" enctype="multipart/form-data">
                     <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <input type="file" name="peek" class="form-control" required>
+                        <input type="hidden" name="user_id" value="{{ current_user.id}}">
+                        <div class="col">
+                            <div class="m-auto">
+                                <label for="Title" class="m-auto">Title</label>
+                                <input type="text" class="form-control" name="title" required>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn">Save</button>
-                        </div>
+                    </div>
+                    <div class="m-auto">
+                        <br>
+                        <label for="Content" class="m-auto">Post</label>
+                        <textarea class="form-control" name="content" required></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-block">Save Changes</button>
+                    </div>
                 </form>
             </div>
         </div>
