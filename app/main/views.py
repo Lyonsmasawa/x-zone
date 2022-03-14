@@ -11,7 +11,9 @@ def index():
     
     posts =  Post.query.order_by(Post.posted.desc()).all()
 
-    return render_template('index.html', posts = posts)
+    quote = random_quotes()
+
+    return render_template('index.html', posts = posts, quotes = quote)
 
 @main.route('/profile/<username>', methods=['GET', 'POST'])
 def profile(username):
