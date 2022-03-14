@@ -1,1 +1,35 @@
 {% extends 'profile/base.html' %}
+
+
+{% block title %}
+{{current_user.username}}
+{% endblock title %}
+
+
+{% block main %}
+<div class="container">
+    <div class="row">
+        <!-- displaying  Username-->
+        <div class="col-md-4">
+            <h3> {{user.username| capitalize}} </h3>
+            <!--Displaying user bio-->
+            {% if user.bio %}
+            <p> {{user.bio}}</p>
+            {%else%}
+            <p> {{user.username| capitalize}} has no bio </p>
+            {% endif %}
+            {% if user == current_user %}
+            <a class="text-danger btn btn-dark" style="text-decoration: none;"
+                href="{{url_for('main.update_profile',username=user.username)}}"><strong> Edit profile </strong></a>
+            {% endif %}
+            <br>
+            <form action="{{url_for('main.update_pic',username=user.username)}}" method="post"
+                enctype="multipart/form-data">
+
+                <input type="file" name="photo" class="form-control" required>
+                <input class="btn btn-dark" type="submit" value="Upload">
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock main %}
