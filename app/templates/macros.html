@@ -6,12 +6,12 @@
 <div class="col-md-2">
     <div class="card text-justify h-100">
         <strong>
-            <h4 class="card-header">{{post.title}}</h4>
+            <h4 class="card-title p-2">{{post.title}}</h4>
         </strong>
         <div class=" ">
             <!--Display preview photo-->
             {% if post.peek %}
-            <img src="{{url_for('static',filename=post.peek)}}" alt="" class="" style="width: 100%;">
+            <img src="{{url_for('static',filename=post.peek)}}" alt="" class="p-0.5" style="width: 100%;">
             {%else%}
             <p>Image Loading . . .</p>
             {% endif %}
