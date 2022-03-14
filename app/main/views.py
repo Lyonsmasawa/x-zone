@@ -4,6 +4,7 @@ from .forms import UpdateProfile, CommentForm
 from flask_login import login_required, current_user
 from ..models import User, Post, Category, Comment
 from app import db, photos
+from ..requests import random_quotes
 
 @main.route('/')
 def index():
