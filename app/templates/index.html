@@ -9,12 +9,11 @@ X-ZONE-D
 <div class="container-fluid">
     <h1 class="text-center">TECH BLOGS</h1>
     <hr>
-    <h1>
-        <a href="" class="typewrite" data-period="2000"
-            data-type='[ "{{quotes.quote}}" ]'>
+    <h6>
+        <p class="typewrite text-center" data-period="6000" data-type='[ "{{quotes.quote}}, Author:{{quotes.quote}}" ]'>
             <span class="wrap"></span>
-        </a>
-    </h1>
+        </p>
+    </h6>
     <div class="row">
         {{ macro.displayPosts(posts) }}
     </div>
